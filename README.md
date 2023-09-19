@@ -9,9 +9,6 @@ Battleship has been a classic for several years. With the Battleship<sup>TM</sup
 
 ![Mock-up](battleshipMockUI.jpg)
 
-Here is a sequence diagram that shows how to people would interact with the backend to vote.
-
-![Voting sequence diagram](votingSequenceDiagram.png)
 
 ### Key features
 
