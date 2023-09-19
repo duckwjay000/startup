@@ -7,7 +7,7 @@ Battleship has been a classic for several years. With the Battleship<sup>TM</sup
 
 ### Design
 
-![Mock-up](battleshipMockUI.jpg)
+![Mock-up](battlshipMockUI.jpg)
 
 
 ### Key features
