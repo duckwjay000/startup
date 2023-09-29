@@ -37,3 +37,16 @@ Here is how I am going to use the required technology
 - **Login** - Register and login users. Credentials securely stored in database. Can't play unless authenticated.
 - **WebSocket** - Updates scores as other users play. Also keeps track of various scores/times of gameplay.
 - **React** - Application ported to use the React web framework.
+
+## HTML deliverable
+
+This deliverable is building out the HTML for my project. Here's what I've done:
+
+- **HTML pages** - Four HTML pages that represent the ability to login, play, view scores, and get info about the project. I might get rid of the "about" page later.
+- **Links** - Each page has a navigation bar at the top that links to the other pages. 
+- **Text** - Each feature has a text description as well as placeholders for data that comes with the other parts of this project.
+- **3rd Party** - I'm not sure I fully understood what was asked here, but I have places that I can implement 3rd party calls later. Mostly this is in the about page where I just implement random API's that don't really contribut much.
+- **Images** - I am going to try using tileable images as buttons for the interactive battleship map. I want to see if I can change the image when clicked.
+- **Login** - Input box and submit button for login.
+- **Database** - The scores and users are stored in a database.
+- **WebSocket** - Updates scores as other users play. Also keeps track of various scores/times of gameplay.
