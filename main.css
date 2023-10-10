@@ -18,17 +18,17 @@ header {
     padding: 1em;
     flex: 0 50px;
     font-size: 20px;
-    background: hsl(181, 42%, 26%);
+    background: hsl(180, 30%, 30%);
     color: white;
-  
+    
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: left;
     align-items: center;
 }
 
 main {
-    flex: 1 calc(100vh - 110px);
+  flex: 1 calc(100vh - 110px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,16 +49,29 @@ menu {
 main {
     flex: 1;
     font-size: 30px;
-  
+    color: white;
+    background: hsl(0, 0%, 32%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
+  main p {
+    font-size: medium;
+  }
+
+  main form {
+    font-size: medium;
+  }
+
+  nav a {
+    padding: 1%;
+  }
+  
   footer {
     flex: 0 50px;
-    background: hsl(180, 30%, 15%);
+    background: hsl(180, 30%, 30%);
     color: white;
   
     display: flex;
