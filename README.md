@@ -50,3 +50,14 @@ This deliverable is building out the HTML for my project. Here's what I've done:
 - **Login** - Input box and submit button for login.
 - **Database** - The scores and users are stored in a database.
 - **WebSocket** - Updates scores as other users play. Also keeps track of various scores/times of gameplay.
+
+## CSS deliverable
+
+For this deliverable I properly styled the application into its final appearance.
+
+- **Header, footer, and main content body** - These appear on all pages and are consistent in size and style.
+- **Navigation elements** - There is a navigation bar in the header at the top that shows current page. Done using Bootstrap. 
+- **Responsive to window resizing** - Made sure that content scales and changes based on screen size. Everything fits/adjusts based on window size.
+- **Application elements** - Used good contrast and whitespace
+- **Application text content** - Consistent fonts
+- **Application images** - Added images. Also used images as buttons.
