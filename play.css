@@ -37,7 +37,7 @@ main {
   color: white;
   background: hsl(224, 100%, 9%);
   height: fit-content;
-  
+  text-align: center;
 }
 
 
@@ -52,8 +52,13 @@ img {
     height: 150%;
 }
 
+.numGuesses {
+    text-align: center;
+}
 
-
+.resetBtn {
+    text-align: center;
+}
 .table {
     width: 30em;
     height: 30em;
@@ -61,6 +66,9 @@ img {
     border-color: transparent;
 }
 
+nav a {
+    padding: 1%;
+  }
 
 menu {
     flex-direction: row !important;
