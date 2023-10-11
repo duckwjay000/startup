@@ -20,16 +20,18 @@ header {
     font-size: 20px;
     background: hsl(180, 30%, 30%);
     color: white;
-    
+    position: fixed;
     display: flex;
     flex-direction: row;
     justify-content: left;
     align-items: center;
+    z-index: 1;
 }
 
 main {
   flex: 1;
   display: flex;
+  padding-top: 75px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -45,12 +47,19 @@ main {
     cursor: pointer;
     background-color: transparent;
     border: none;
+
 }
 
 img {
     width: 150%;
     height: 150%;
+    border-radius: 2px;
 }
+
+td:hover {
+    box-shadow: white;
+}
+
 
 .numGuesses {
     text-align: center;
@@ -68,7 +77,7 @@ img {
 
 nav a {
     padding: 1%;
-  }
+}
 
 menu {
     flex-direction: row !important;
