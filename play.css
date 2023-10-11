@@ -56,11 +56,6 @@ img {
     border-radius: 2px;
 }
 
-td:hover {
-    box-shadow: white;
-}
-
-
 .numGuesses {
     text-align: center;
 }
