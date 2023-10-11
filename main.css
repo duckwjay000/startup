@@ -27,14 +27,6 @@ header {
     align-items: center;
 }
 
-main {
-  flex: 1 calc(100vh - 110px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
 main table {
     width: 5%;
     height: 50%;
