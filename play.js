@@ -60,6 +60,8 @@ class Game {
     }
     this.updateCount(this.numGuess);
     this.saveScore(this.numGuess)
+    
+    
     //console.log(numGuess)
     /*if (this.allowPlayer) {
       this.allowPlayer = false;
@@ -92,6 +94,7 @@ class Game {
     document.getElementById('min').innerHTML = "00";
     document.getElementById('sec').innerHTML = "00";
     document.getElementById('count').innerHTML = "00";
+    this.updateCount(count);
   }
 
   getPlayerName() {
@@ -99,7 +102,8 @@ class Game {
   }
 
   updateCount(count) {
-    const countEl = document.querySelector('#count');
+    console.log(this)
+    const countEl = document.querySelector('#guessNum');
     countEl.textContent = count;
   }
 
