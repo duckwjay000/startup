@@ -36,6 +36,10 @@ class Game {
     this.firstClick = true;
     this.timer = false;
     this.numGuess = 0;
+    //Set up buttons here
+    
+    //Set up ship locatin here
+    
     /*document.querySelectorAll('.game-button').forEach((el, i) => {
       if (i < btnDescriptions.length) {
         this.buttons.set(el.id, new Button(btnDescriptions[i], el));
@@ -61,6 +65,17 @@ class Game {
     this.updateCount(this.numGuess);
     this.saveScore(this.numGuess)
     
+
+
+    //game logic goes in here
+
+
+
+
+
+
+
+
     
     //console.log(numGuess)
     /*if (this.allowPlayer) {
