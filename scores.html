@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="main.css" />
     <title>Battleship Lite HTML</title>
+    <script src="scores.js"></script>
     <!-- Creates the little icon next to the URL -->
     <link rel="icon" href="battleship.ico" />
   </head>
@@ -43,34 +44,15 @@
         <table class="table table-striped-columns table-bordered table-hover">
           <caption>High scores</caption>
             <thead class="table-dark">
-              <tr class="">
+              <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Number of guesses</th>
                 <th scope="col">Date</th>
               </tr>
             </thead>
-            <tbody class="table-dark">
-              <tr>
-                <th scope="row">1</th>
-                <td>Jaysen Duckworth</td>
-                <td>5</td>
-                <td>December 25, 2021</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Darci Ramirez</td>
-                <td>9</td>
-                <td>June 2, 2021</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Your mom</td>
-                <td>22</td>
-                <td>July 3, 2023</td>
-              </tr>
-            </tbody>
-          </table>
+            <tbody id="scores"></tbody>
+        </table>
     </main>
 
     <footer>
