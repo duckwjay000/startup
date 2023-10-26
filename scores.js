@@ -16,7 +16,7 @@ function loadScores() {
   
         rankTdEl.textContent = i + 1;
         nameTdEl.textContent = score.name;
-        numGuessTdEl.textContent = score.numGuess;
+        numGuessTdEl.textContent = score.score;
         dateTdEl.textContent = score.date;
   
         const rowEl = document.createElement('tr');

@@ -58,6 +58,8 @@ class Game {
       stopWatch();
       
     }
+    this.updateCount(this.numGuess);
+    this.saveScore(this.numGuess)
     //console.log(numGuess)
     /*if (this.allowPlayer) {
       this.allowPlayer = false;
@@ -96,12 +98,9 @@ class Game {
     return localStorage.getItem('userName') ?? 'Mystery player';
   }
 
-
-
-
-  updateScore(score) {
-    const scoreEl = document.querySelector('#score');
-    scoreEl.textContent = score;
+  updateCount(count) {
+    const countEl = document.querySelector('#count');
+    countEl.textContent = count;
   }
 
 
@@ -124,7 +123,7 @@ class Game {
 
     let found = false;
     for (const [i, prevScore] of scores.entries()) {
-      if (score > prevScore.score) {
+      if (score < prevScore.score) {
         scores.splice(i, 0, newScore);
         found = true;
         break;
