@@ -16,6 +16,7 @@ class Button {
       this.sound.volume = volume;
       this.sound.onended = playResolve;
       this.sound.play();
+      console.log("should play sound")
     });
   }
 }
@@ -29,6 +30,7 @@ class Game {
   resetBtn = document.getElementById('resetBtn');
   guessText = document.querySelector('#count');
   numGuess;
+  volume;
 
 
   constructor() {
@@ -36,6 +38,8 @@ class Game {
     this.firstClick = true;
     this.timer = false;
     this.numGuess = 0;
+    this.volume = 1.0;
+    this.sound = new Audio('splash.mp3')
     //Set up buttons here
     
     //Set up ship locatin here
@@ -53,7 +57,8 @@ class Game {
   async pressButton(button) {
     this.timer = true;
     console.log("button pressed");
-
+    
+    this.press()
     //sound.play();
     this.numGuess++;
     if (this.firstClick) {
@@ -117,7 +122,6 @@ class Game {
   }
 
   updateCount(count) {
-    console.log(this)
     const countEl = document.querySelector('#guessNum');
     countEl.textContent = count;
   }
@@ -158,6 +162,22 @@ class Game {
     }
 
     return scores;
+  }
+
+  async press() {
+    return new Promise(async (pressResolve) => {
+      await this.playSound(1.0);
+      pressResolve();
+    });
+  }
+
+  async playSound(volume) {
+    return new Promise((playResolve) => {
+      this.sound.volume = volume;
+      this.sound.onended = playResolve;
+      this.sound.play();
+      console.log("should play sound")
+    });
   }
 }
 
@@ -222,6 +242,8 @@ function stopWatch() {
     document.getElementById('count').innerHTML = countString;
     setTimeout(stopWatch, 10);
   }
+
+  
 }
 
 
