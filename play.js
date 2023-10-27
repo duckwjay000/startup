@@ -2,7 +2,11 @@ class Button {
   constructor(el) {
     this.el = el;
     this.sound = new Audio('splash.mp3')
+    this.isClickable = true
   }
+
+  setClicked() {this.isClickable = false}
+  getClicked() {return this.isClickable}
 
   async press(volume = 1.0) {
     return new Promise(async (pressResolve) => {
@@ -44,31 +48,35 @@ class Game {
     
     //Set up ship locatin here
     
-    /*document.querySelectorAll('.game-button').forEach((el, i) => {
-      if (i < btnDescriptions.length) {
-        this.buttons.set(el.id, new Button(btnDescriptions[i], el));
+    document.querySelectorAll('.gridBtn').forEach((el, i) => {
+      if (i < 100) {
+        this.buttons.set(el.id, new Button(el));
+        console.log(el)
       }
-    });*/
+    });
 
     const playerNameEl = document.querySelector('.game-stats');
     playerNameEl.textContent = this.getPlayerName();
   }
 
   async pressButton(button) {
-    this.timer = true;
-    console.log("button pressed");
-    
-    this.press()
-    //sound.play();
-    this.numGuess++;
-    if (this.firstClick) {
-
-      this.firstClick = false;
-      stopWatch();
+    console.log(button.id)
+    if (button.isClickable) {
+      this.timer = true;
+      console.log("button pressed");
       
+      this.press()
+      //sound.play();
+      this.numGuess++;
+      if (this.firstClick) {
+
+        this.firstClick = false;
+        stopWatch();
+        
+      }
+      this.updateCount(this.numGuess);
     }
-    this.updateCount(this.numGuess);
-    this.saveScore(this.numGuess)
+    //this.saveScore(this.numGuess)
     
 
 
