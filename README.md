@@ -61,3 +61,12 @@ For this deliverable I properly styled the application into its final appearance
 - **Application elements** - Used good contrast and whitespace
 - **Application text content** - Consistent fonts
 - **Application images** - Added images. Also used images as buttons.
+
+## JavaScript deliverable
+
+For this deliverable I implemented by JavaScript so that the application works for a single user. I also added placeholders for future technology.
+
+- **login** - When you press enter or the login button it takes you to the play screen. Should allow future functionality.
+- **database** - Displayed the scores on the scores page. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
+- **WebSocket** - I have a place holder for this in the scores section. Not really sure if I'm understanding this correctly though.
+- **application logic** - User is able to interact with grid system and have it update. Also randomly generates a game for the user to play.
