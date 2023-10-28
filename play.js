@@ -35,6 +35,7 @@ class Game {
   guessText = document.querySelector('#count');
   numGuess;
   volume;
+  shipPosition;
 
 
   constructor() {
@@ -44,6 +45,7 @@ class Game {
     this.numGuess = 0;
     this.volume = 1.0;
     this.sound = new Audio('splash.mp3')
+    this.shipPosition = this.placeShip()
     //Set up buttons here
     
     //Set up ship locatin here
@@ -84,12 +86,6 @@ class Game {
 
 
 
-
-
-
-
-
-    
     //console.log(numGuess)
     /*if (this.allowPlayer) {
       this.allowPlayer = false;
@@ -134,7 +130,30 @@ class Game {
     countEl.textContent = count;
   }
 
-
+  placeShip() {
+    const gridSize = 10;
+    const shipLength = 4;
+    const direction = Math.floor(Math.random()*2);
+    const randomStart = Math.floor(Math.random() * 6);
+    const randomVal = Math.floor(Math.random() * 6)
+    const randomCol = Math.floor(Math.random() * 10)
+    let ship = [];
+  
+    if (direction === 0) {
+      for (let i=0; i<shipLength; i++) {
+        ship.push(randomStart*10+randomVal+i)
+      }
+    }
+    else {
+      for (let i=0; i<shipLength; i++) {
+        ship.push(randomCol+(randomStart*10)+(i*10))
+      }
+    }
+  
+    console.log(ship)
+  
+  
+  }
 
   saveScore(score) {
     const userName = this.getPlayerName();
@@ -184,7 +203,6 @@ class Game {
       this.sound.volume = volume;
       this.sound.onended = playResolve;
       this.sound.play();
-      console.log("should play sound")
     });
   }
 }
@@ -229,6 +247,7 @@ function stopWatch() {
     setTimeout(stopWatch, 10);
   } 
 }
+
 
 
 
