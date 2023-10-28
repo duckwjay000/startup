@@ -1,26 +1,34 @@
 class Button {
   constructor(el) {
     this.el = el;
-    this.sound = new Audio('splash.mp3')
+    this.splash = new Audio('splash.mp3')
+    this.hit = new Audio('hit.mp3')
     this.isClickable = true
   }
 
   setClicked() {this.isClickable = false}
   getClicked() {return this.isClickable}
 
-  async press(volume = 1.0) {
-    return new Promise(async (pressResolve) => {
-      await this.playSound(volume);
-      pressResolve();
-    });
+  async press(result) {
+    if (result === "hit") {
+      return new Promise(async (pressResolve) => {
+        await this.playSound(1.0, this.hit);
+        pressResolve();
+      });
+    }
+    else if (result === "miss") {
+      return new Promise(async (pressResolve) => {
+        await this.playSound(1.0, this.splash);
+        pressResolve();
+      }); 
+    }
   }
 
-  async playSound(volume) {
+  async playSound(volume, sound) {
     return new Promise((playResolve) => {
-      this.sound.volume = volume;
-      this.sound.onended = playResolve;
-      this.sound.play();
-      console.log("should play sound")
+      sound.volume = volume;
+      sound.onended = playResolve;
+      sound.play();
     });
   }
 }
@@ -36,6 +44,7 @@ class Game {
   numGuess;
   volume;
   shipPosition;
+  numHits;
 
 
   constructor() {
@@ -46,6 +55,7 @@ class Game {
     this.volume = 1.0;
     this.sound = new Audio('splash.mp3')
     this.shipPosition = this.placeShip()
+    this.numHits = 0;
     //Set up buttons here
     
     //Set up ship locatin here
@@ -53,7 +63,6 @@ class Game {
     document.querySelectorAll('.gridBtn').forEach((el, i) => {
       if (i < 100) {
         this.buttons.set(el.id, new Button(el));
-        console.log(this.buttons.get(el.id).getClicked())
       }
     });
 
@@ -62,13 +71,26 @@ class Game {
   }
 
   async pressButton(button) {
+    
     if (this.buttons.get(button.id).getClicked()) {
       this.timer = true;
       this.buttons.get(button.id).setClicked()
-      console.log("button pressed");
-      
-      this.press()
+      //console.log("button pressed");
 
+      if (this.shipPosition.includes(parseInt(button.id))) {
+        //
+        console.log("HIT");
+        this.buttons.get(button.id).press("hit")
+        this.numHits++;
+        if (this.numHits === 4) {
+          //END GAME HERE
+        }
+        
+      }
+      else {
+        console.log("MISS")
+        this.buttons.get(button.id).press("miss")
+      }
       this.numGuess++;
       if (this.firstClick) {
 
@@ -78,6 +100,9 @@ class Game {
       }
       this.updateCount(this.numGuess);
     }
+
+
+
     //this.saveScore(this.numGuess)
     
 
@@ -119,6 +144,7 @@ class Game {
     document.getElementById('sec').innerHTML = "00";
     document.getElementById('count').innerHTML = "00";
     this.updateCount(count);
+    this.shipPosition = this.placeShip()
   }
 
   getPlayerName() {
@@ -141,18 +167,16 @@ class Game {
   
     if (direction === 0) {
       for (let i=0; i<shipLength; i++) {
-        ship.push(randomStart*10+randomVal+i)
+        ship.push(randomStart*10+randomVal+i+1)
       }
     }
     else {
       for (let i=0; i<shipLength; i++) {
-        ship.push(randomCol+(randomStart*10)+(i*10))
+        ship.push(randomCol+(randomStart*10)+(i*10)+1)
       }
     }
-  
     console.log(ship)
-  
-  
+    return ship
   }
 
   saveScore(score) {
@@ -189,21 +213,6 @@ class Game {
     }
 
     return scores;
-  }
-
-  async press() {
-    return new Promise(async (pressResolve) => {
-      await this.playSound(1.0);
-      pressResolve();
-    });
-  }
-
-  async playSound(volume) {
-    return new Promise((playResolve) => {
-      this.sound.volume = volume;
-      this.sound.onended = playResolve;
-      this.sound.play();
-    });
   }
 }
 
