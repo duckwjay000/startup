@@ -51,7 +51,7 @@ class Game {
     document.querySelectorAll('.gridBtn').forEach((el, i) => {
       if (i < 100) {
         this.buttons.set(el.id, new Button(el));
-        console.log(el)
+        console.log(this.buttons.get(el.id).getClicked())
       }
     });
 
@@ -60,13 +60,13 @@ class Game {
   }
 
   async pressButton(button) {
-    console.log(button.id)
-    if (button.isClickable) {
+    if (this.buttons.get(button.id).getClicked()) {
       this.timer = true;
+      this.buttons.get(button.id).setClicked()
       console.log("button pressed");
       
       this.press()
-      //sound.play();
+
       this.numGuess++;
       if (this.firstClick) {
 
@@ -191,28 +191,6 @@ class Game {
 
 const game = new Game();
 
-
-
-/*function pressButton(el) {
-    timer = true;
-    console.log("button pressed");
-
-    //sound.play();
-    numGuess++;
-    if (firstClick) {
-
-      firstClick = false;
-      stopWatch();
-      
-    }
-    console.log(numGuess)
-
-}*/
-
-
-
-
-
 let minute = 0;
 let second = 0;
 let count = 0;
@@ -249,9 +227,7 @@ function stopWatch() {
     document.getElementById('sec').innerHTML = secString;
     document.getElementById('count').innerHTML = countString;
     setTimeout(stopWatch, 10);
-  }
-
-  
+  } 
 }
 
 
