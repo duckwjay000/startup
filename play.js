@@ -8,6 +8,13 @@ class Button {
 
   setClicked() {this.isClickable = false}
   getClicked() {return this.isClickable}
+  setNewImage(newImage) {
+    this.el.getElementsByTagName('img')[0].src = newImage
+  }
+  resetImage() {
+    this.el.getElementsByTagName('img')[0].src = "ocean.jpg"
+  }
+
 
   async press(result) {
     if (result === "hit") {
@@ -45,7 +52,7 @@ class Game {
   volume;
   shipPosition;
   numHits;
-
+  endGame;
 
   constructor() {
     this.buttons = new Map();
@@ -56,9 +63,7 @@ class Game {
     this.sound = new Audio('splash.mp3')
     this.shipPosition = this.placeShip()
     this.numHits = 0;
-    //Set up buttons here
-    
-    //Set up ship locatin here
+    this.endGame = false
     
     document.querySelectorAll('.gridBtn').forEach((el, i) => {
       if (i < 100) {
@@ -71,72 +76,54 @@ class Game {
   }
 
   async pressButton(button) {
-    
-    if (this.buttons.get(button.id).getClicked()) {
-      this.timer = true;
-      this.buttons.get(button.id).setClicked()
-      //console.log("button pressed");
+    if (!this.endGame) {
+      if (this.buttons.get(button.id).getClicked()) {
+        this.timer = true;
+        this.buttons.get(button.id).setClicked()
 
-      if (this.shipPosition.includes(parseInt(button.id))) {
-        //
-        console.log("HIT");
-        this.buttons.get(button.id).press("hit")
-        this.numHits++;
-        if (this.numHits === 4) {
-          //END GAME HERE
+        if (this.shipPosition.includes(parseInt(button.id))) {
+          //
+          console.log("HIT");
+          this.buttons.get(button.id).press("hit")
+          this.numHits++;
+          this.buttons.get(button.id).setNewImage("oceanHit.jpg")
+          if (this.numHits === 4) {
+            //END GAME HERE
+            this.timer = false;
+            this.endGame = true;
+            this.saveScore(this.numGuess)
+          }
+          
         }
-        
-      }
-      else {
-        console.log("MISS")
-        this.buttons.get(button.id).press("miss")
-      }
-      this.numGuess++;
-      if (this.firstClick) {
+        else {
+          console.log("MISS")
+          this.buttons.get(button.id).press("miss")
+          this.buttons.get(button.id).setNewImage("oceanX.jpg")
+        }
+        this.numGuess++;
+      
+        if (this.firstClick) {
 
-        this.firstClick = false;
-        stopWatch();
-        
+          this.firstClick = false;
+          stopWatch();
+          
+        }
+        this.updateCount(this.numGuess);
       }
-      this.updateCount(this.numGuess);
     }
-
-
-
-    //this.saveScore(this.numGuess)
-    
-
-
     //game logic goes in here
-
-
-
-    //console.log(numGuess)
-    /*if (this.allowPlayer) {
-      this.allowPlayer = false;
-      await this.buttons.get(button.id).press(1.0);
-
-      if (this.sequence[this.playerPlaybackPos].el.id === button.id) {
-        this.playerPlaybackPos++;
-        if (this.playerPlaybackPos === this.sequence.length) {
-          this.playerPlaybackPos = 0;
-          this.addButton();
-          this.updateScore(this.sequence.length - 1);
-          await this.playSequence();
-        }
-        this.allowPlayer = true;
-      } else {
-        this.saveScore(this.sequence.length - 1);
-        this.mistakeSound.play();
-        await this.buttonDance(2);
-      }
-    }*/
   }
 
   async reset() {
+    this.buttons = new Map();
     this.firstClick = true;
     this.timer = false;
     this.numGuess = 0;
+    this.volume = 1.0;
+    this.sound = new Audio('splash.mp3')
+    this.shipPosition = this.placeShip()
+    this.numHits = 0;
+    this.endGame = false
     minute = 0;
     second = 0;
     count = 0;
@@ -144,7 +131,13 @@ class Game {
     document.getElementById('sec').innerHTML = "00";
     document.getElementById('count').innerHTML = "00";
     this.updateCount(count);
-    this.shipPosition = this.placeShip()
+    
+    document.querySelectorAll('.gridBtn').forEach((el, i) => {
+      if (i < 100) {
+        this.buttons.set(el.id, new Button(el));
+      }
+    });
+    this.buttons.forEach(button => button.resetImage());
   }
 
   getPlayerName() {
@@ -263,5 +256,24 @@ function stopWatch() {
 
 
 
+   //console.log(numGuess)
+    /*if (this.allowPlayer) {
+      this.allowPlayer = false;
+      await this.buttons.get(button.id).press(1.0);
 
+      if (this.sequence[this.playerPlaybackPos].el.id === button.id) {
+        this.playerPlaybackPos++;
+        if (this.playerPlaybackPos === this.sequence.length) {
+          this.playerPlaybackPos = 0;
+          this.addButton();
+          this.updateScore(this.sequence.length - 1);
+          await this.playSequence();
+        }
+        this.allowPlayer = true;
+      } else {
+        this.saveScore(this.sequence.length - 1);
+        this.mistakeSound.play();
+        await this.buttonDance(2);
+      }
+    }*/
 
