@@ -93,7 +93,6 @@ class Game {
             this.endGame = true;
             this.saveScore(this.numGuess+1)
           }
-          
         }
         else {
           console.log("MISS")
