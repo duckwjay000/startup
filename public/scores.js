@@ -1,8 +1,19 @@
-function loadScores() {
+async function loadScores() {
     let scores = [];
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      scores = JSON.parse(scoresText);
+    
+    
+    try {
+      const response = await fetch('/api/scores');
+      scores = await response.json();
+
+      // saving scores in case we go offline
+      localStorage.setItem('scores');
+    } catch {
+      //If error, use previous scores
+      const scoresText = localStorage.getItem('scores');
+      if (scoresText) {
+        scores = JSON.parse(scoresText);
+      }
     }
   
     const tableBodyEl = document.querySelector('#scores');

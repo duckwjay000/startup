@@ -91,7 +91,7 @@ class Game {
             //END GAME HERE
             this.timer = false;
             this.endGame = true;
-            this.saveScore(this.numGuess)
+            this.saveScore(this.numGuess+1)
           }
           
         }
