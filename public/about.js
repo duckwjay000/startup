@@ -8,9 +8,11 @@ function getJoke() {
 
 const apiKey = 'AIzaSyDnrM88n-cLnUK7NeSc2zOYcGBodWFiTZ4'
 const maxResults = 1;
+const languageCode = 'en';
+const categoryId = '24';
 
 function getVideo() {
-    fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&order=date&maxResults=${maxResults}`)
+    fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&order=date&maxResults=${maxResults}&relevanceLanguage=${languageCode}`)
         .then(response => response.json())
         .then(data => {
             // Extract the video ID from the response
@@ -22,6 +24,8 @@ function getVideo() {
 
             // You can also create an iframe to embed the video in your HTML
             // const iframe = document.createElement('iframe');
+            const iframe = document.getElementById("videoFrame")
+            iframe.src = `https://www.youtube.com/embed/${videoId}`;
             // iframe.src = `https://www.youtube.com/embed/${videoId}`;
             // document.getElementById('video-container').appendChild(iframe);
         })
