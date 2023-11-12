@@ -70,3 +70,13 @@ For this deliverable I implemented by JavaScript so that the application works f
 - **database** - Displayed the scores on the scores page. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
 - **WebSocket** - I have a place holder for this in the scores section. Not really sure if I'm understanding this correctly though.
 - **application logic** - User is able to interact with grid system and have it update. Also randomly generates a game for the user to play.
+
+- ## Service deliverable
+
+For this deliverable I added backend endpoints that receives votes and returns scores.
+
+- **Node.js/Express HTTP service** - done!
+- **Static middleware for frontend** - done!
+- **Calls to third party endpoints** - I am calling Google's Youtube API to get a random video
+- **Backend service endpoints** - Placeholders for login that stores the current user on the server. Also updating/displaying scores. 
+- **Frontend calls service endpoints** - I did this using the fetch function.
