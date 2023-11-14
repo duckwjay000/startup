@@ -80,3 +80,11 @@ For this deliverable I added backend endpoints that receives votes and returns s
 - **Calls to third party endpoints** - I am calling Google's Youtube API to get a random video
 - **Backend service endpoints** - Placeholders for login that stores the current user on the server. Also updating/displaying scores. 
 - **Frontend calls service endpoints** - I did this using the fetch function.
+
+## DB deliverable
+
+For this deliverable I stored the high scores in the database.
+
+- **MongoDB Atlas database created** - done!
+- **Endpoints for data** - My stubbed out endpoints now process the data and send it to Mongo.
+- **Stores data in MongoDB** - done!
