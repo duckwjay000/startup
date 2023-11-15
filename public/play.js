@@ -171,17 +171,7 @@ class Game {
     return ship
   }
 
-  /*saveScore(score) {
-    const userName = this.getPlayerName();
-    let scores = [];
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      scores = JSON.parse(scoresText);
-    }
-    scores = this.updateScores(userName, score, scores);
 
-    localStorage.setItem('scores', JSON.stringify(scores));
-  }*/
 
   async saveScore(score) {
     const userName = this.getPlayerName();
