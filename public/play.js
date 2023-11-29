@@ -1,3 +1,6 @@
+const GameEndEvent = 'gameEnd';
+const GameStartEvent = 'gameStart';
+
 class Button {
   constructor(el) {
     this.el = el;
@@ -53,6 +56,7 @@ class Game {
   shipPosition;
   numHits;
   endGame;
+  socket;
 
   constructor() {
     this.buttons = new Map();
@@ -73,6 +77,8 @@ class Game {
 
     const playerNameEl = document.querySelector('.game-stats');
     playerNameEl.textContent = this.getPlayerName();
+
+    this.configureWebSocket();
   }
 
   async pressButton(button) {
@@ -110,7 +116,6 @@ class Game {
         this.updateCount(this.numGuess);
       }
     }
-    //game logic goes in here
   }
 
   async reset() {
@@ -137,6 +142,8 @@ class Game {
       }
     });
     this.buttons.forEach(button => button.resetImage());
+    // Let other players know a new game has started
+    this.broadcastEvent(this.getPlayerName(), GameStartEvent, {});
   }
 
   getPlayerName() {
@@ -217,6 +224,48 @@ class Game {
 
     return scores;
   }
+
+
+  configureWebSocket() {
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    this.socket.onopen = (event) => {
+      this.displayMsg('system', 'game', 'connected');
+    };
+    this.socket.onclose = (event) => {
+      this.displayMsg('system', 'game', 'disconnected');
+    };
+    this.socket.onmessage = async (event) => {
+      const msg = JSON.parse(await event.data.text());
+      if (msg.type === GameEndEvent) {
+        this.displayMsg('player', msg.from, `scored ${msg.value.score}`);
+      } else if (msg.type === GameStartEvent) {
+        this.displayMsg('player', msg.from, `started a new game`);
+      }
+    };
+  }
+
+  displayMsg(cls, from, msg) {
+    const chatText = document.querySelector('#player-messages');
+    chatText.innerHTML =
+      `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+  }
+
+  broadcastEvent(from, type, value) {
+    const event = {
+      from: from,
+      type: type,
+      value: value,
+    };
+    this.socket.send(JSON.stringify(event));
+  }
+
+
+
+
+
+
+
 }
 
 const game = new Game();
@@ -266,24 +315,5 @@ function stopWatch() {
 
 
 
-   //console.log(numGuess)
-    /*if (this.allowPlayer) {
-      this.allowPlayer = false;
-      await this.buttons.get(button.id).press(1.0);
-
-      if (this.sequence[this.playerPlaybackPos].el.id === button.id) {
-        this.playerPlaybackPos++;
-        if (this.playerPlaybackPos === this.sequence.length) {
-          this.playerPlaybackPos = 0;
-          this.addButton();
-          this.updateScore(this.sequence.length - 1);
-          await this.playSequence();
-        }
-        this.allowPlayer = true;
-      } else {
-        this.saveScore(this.sequence.length - 1);
-        this.mistakeSound.play();
-        await this.buttonDance(2);
-      }
-    }*/
+   
 
