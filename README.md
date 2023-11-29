@@ -71,7 +71,7 @@ For this deliverable I implemented by JavaScript so that the application works f
 - **WebSocket** - I have a place holder for this in the scores section. Not really sure if I'm understanding this correctly though.
 - **application logic** - User is able to interact with grid system and have it update. Also randomly generates a game for the user to play.
 
-- ## Service deliverable
+## Service deliverable
 
 For this deliverable I added backend endpoints that receives votes and returns scores.
 
@@ -88,3 +88,10 @@ For this deliverable I stored the high scores in the database.
 - **MongoDB Atlas database created** - done!
 - **Endpoints for data** - My stubbed out endpoints now process the data and send it to Mongo.
 - **Stores data in MongoDB** - done!
+
+## Login deliverable
+
+- **User registration** - Done!
+- **existing user** - Done!
+- **Use MongoDB to store credentials** - Stores both user and score data.
+- **Restricts functionality** - You can't see high scores or save high scores unless logged in.
