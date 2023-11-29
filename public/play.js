@@ -57,6 +57,8 @@ class Game {
   numHits;
   endGame;
   socket;
+  numMessages;
+  messages;
 
   constructor() {
     this.buttons = new Map();
@@ -68,6 +70,8 @@ class Game {
     this.shipPosition = this.placeShip()
     this.numHits = 0;
     this.endGame = false
+    this.numMessages = 0;
+    this.messages = [];
     
     document.querySelectorAll('.gridBtn').forEach((el, i) => {
       if (i < 100) {
@@ -192,6 +196,8 @@ class Game {
         body: JSON.stringify(newScore),
       });
 
+
+      this.broadcastEvent(userName, GameEndEvent, newScore);
       // Store what the service gave us as the high scores
       const scores = await response.json();
       localStorage.setItem('scores', JSON.stringify(scores));
@@ -237,8 +243,18 @@ class Game {
     };
     this.socket.onmessage = async (event) => {
       const msg = JSON.parse(await event.data.text());
+      this.numMessages++;
+      if (this.numMessages > 5) {
+        this.messages.shift();
+        var div = document.querySelector('#player-messages');
+        div.removeChild(div.lastChild)
+      }
+      this.messages.push(msg);
+
+      
+
       if (msg.type === GameEndEvent) {
-        this.displayMsg('player', msg.from, `scored ${msg.value.score}`);
+        this.displayMsg('player', msg.from, `sank the ship in ${msg.value.score} guesses`);
       } else if (msg.type === GameStartEvent) {
         this.displayMsg('player', msg.from, `started a new game`);
       }
