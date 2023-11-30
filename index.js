@@ -86,7 +86,6 @@ secureApiRouter.use(async (req, res, next) => {
   }
 });
 
-
 // GetScores
 secureApiRouter.get('/scores', async (req, res) => {
   const scores = await DB.getHighScores();
