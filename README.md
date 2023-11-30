@@ -95,3 +95,13 @@ For this deliverable I stored the high scores in the database.
 - **existing user** - Done!
 - **Use MongoDB to store credentials** - Stores both user and score data.
 - **Restricts functionality** - You can't see high scores or save high scores unless logged in.
+
+## WebSocket deliverable
+
+For this deliverable I used webSocket to show messages from other users playing
+
+- **Backend listens for WebSocket connection** - done!
+- **Frontend makes WebSocket connection** - done!
+- **Data sent over WebSocket connection** - done!
+- **WebSocket data displayed** - Users get notifications from other players trigger certain events.
+
