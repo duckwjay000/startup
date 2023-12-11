@@ -1,5 +1,6 @@
 import React from 'react';
 import './about.css'
+import oceanImage from '/placeholder.jpg'
 
 export function About(props) {
 
@@ -36,7 +37,7 @@ export function About(props) {
 
     return (
       <main className="container-fluid text-center">
-          <div id="picture" className="picture-box"><img src="placeholder.jpg" alt="random" /></div>
+          <div id="picture" className="picture-box"><img src={oceanImage} alt="random" /></div>
 
           <p>
             Battleship is a two-player strategy game where players take turns guessing the location of the others ships until all ships are sunk.

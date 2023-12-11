@@ -43,7 +43,7 @@ main {
 }
 
 
-.gridBtn {
+#gridBtn {
     cursor: pointer;
     background-color: transparent;
     border: none;
