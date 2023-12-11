@@ -105,3 +105,13 @@ For this deliverable I used webSocket to show messages from other users playing
 - **Data sent over WebSocket connection** - done!
 - **WebSocket data displayed** - Users get notifications from other players trigger certain events.
 
+## React deliverable
+
+For this deliverable, I wasn't able to get everything done/working. I think I did enough for about 75% or so.
+
+- **Bundled and transpiled** - Done!
+- **Components** - About, Scores, and play are all components.
+- **Router** - Routes between login, play, scores, and about pages.
+- **Hooks** - Scores and about page have hooks. I wasn't able to get any working for login or play.
+
+
