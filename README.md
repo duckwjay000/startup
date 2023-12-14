@@ -110,8 +110,7 @@ For this deliverable I used webSocket to show messages from other users playing
 For this deliverable, I wasn't able to get everything done/working. I think I did enough for about 75% or so.
 
 - **Bundled and transpiled** - Done!
-- **Components** - About, Scores, and play are all components.
+- **Components** - About, Scores, Login, and play are all components.
 - **Router** - Routes between login, play, scores, and about pages.
-- **Hooks** - Scores and about page have hooks. I wasn't able to get any working for login or play.
-
+- **Hooks** - Scores, Login, and about page have hooks. I wasn't able to get any working for play.
 
