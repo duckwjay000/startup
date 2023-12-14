@@ -107,7 +107,7 @@ For this deliverable I used webSocket to show messages from other users playing
 
 ## React deliverable
 
-For this deliverable, I wasn't able to get everything done/working. I think I did enough for about 75% or so.
+For this deliverable, I wasn't able to get everything done/working (meaning previous functionality). I was able to convert mostly to react and think I did enough for about 75% or so.
 
 - **Bundled and transpiled** - Done!
 - **Components** - About, Scores, Login, and play are all components.
