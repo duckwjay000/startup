@@ -69,9 +69,14 @@ main {
     padding: 1%;
   }
 
+
+  nav {
+    background: hsl(180, 30%, 30%);
+  }
+
   footer {
     flex: 0 50px;
-    background: hsl(180, 30%, 30%);
+    background: hsl(27, 29%, 30%);
     color: white;
   
     display: flex;

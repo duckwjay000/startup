@@ -1,6 +1,17 @@
-#playerName {
-    color: rgb(118, 190, 210);
-    font-size: 1.5em;
-    padding: 0.5em;
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Set the height to fill the entire viewport */
+  }
+  
+  .login-form {
+    max-width: 400px; /* Adjust the maximum width of the form */
+    width: 100%;
+    padding: 20px;
+    background-color: #fff; /* Optional: Add a background color to the form */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow */
   }
   
